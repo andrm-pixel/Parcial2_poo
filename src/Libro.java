@@ -6,6 +6,7 @@ public class Libro {
     private Integer año;
     private Boolean disponible;
 
+    //constructor
     public Libro(Integer id, Integer año, String titulo, String autor, String genero, boolean disponible) {
         this.id = id;
         this.año = año;
@@ -15,7 +16,7 @@ public class Libro {
         this.disponible = disponible;
 
     }
-
+    // Getters y Setters
     public Libro(int id, String titulo, String autor, String genero, int año, boolean disponible) {
 
     }
@@ -61,6 +62,7 @@ public class Libro {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
     @Override
     public String toString() {
         return id + " | " + titulo + " - " + autor + (disponible ? " [Disponible]" : " [Prestado]");

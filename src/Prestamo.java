@@ -20,36 +20,46 @@ public class Prestamo {
     }
 
     public Integer getId() {
+
         return id;
     }
     public void setId(Integer id) {
+
         this.id = id;
     }
 
     public Integer getId_libro() {
+
         return id_libro;
     }
     public void setId_libro(Integer id_libro) {
+
         this.id_libro = id_libro;
     }
 
     public String getNombre() {
+
         return nombre;
     }
     public void setNombre(String nombre) {
+
         this.nombre = nombre;
     }
     public LocalDate getFechaPrestamo() {
+
         return fechaPrestamo;
     }
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo; }
+        this.fechaPrestamo = fechaPrestamo;
+    }
 
     public LocalDate getFechaDevolucion() {
+
         return fechaDevolucion;
     }
 
     public void setFechaDevolucion(LocalDate fechaDevolucion) {
+
         this.fechaDevolucion = fechaDevolucion;
     }
 
@@ -59,5 +69,15 @@ public class Prestamo {
 
     public String getNombreUsuario() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        String dev = (fechaDevolucion != null) ? fechaDevolucion.toString() : "Pendiente";
+        return "Prestamo #" + id
+                + " | Libro ID: " + id_libro
+                + " | Lector: " + nombre
+                + " | Prestado: " + fechaPrestamo
+                + " | Devolucion: " + dev;
     }
 }

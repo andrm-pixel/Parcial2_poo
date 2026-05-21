@@ -46,7 +46,7 @@ public class PrestamoDAO {
         return null;
     }
 
-    // Busca prestamos por el nombre del lector.
+    // Busca préstamos por el nombre del lector.
      public List<Prestamo> consultarPorNombre(String nombre) {
         List<Prestamo> lista = new ArrayList<>();
         String sql = "SELECT * FROM prestamos WHERE nombre_usuario ILIKE ?";

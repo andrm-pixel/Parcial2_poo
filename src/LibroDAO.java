@@ -23,7 +23,7 @@ public class LibroDAO {
                 lista.add(mapearLibro(rs));
             }
         } catch (SQLException e) {
-            System.err.println("[Error] No se pudo traer la lista de libros: " + e.getMessage());
+            System.err.println("Error al consultar libros: " + e.getMessage());
         }
         return lista;
     }
@@ -47,7 +47,7 @@ public class LibroDAO {
 
         // Si no se encuentra, retornamos null
         } catch (SQLException e) {
-            System.err.println("[Error] No se pudo buscar el libro con ID " + id + ": " + e.getMessage());
+            System.err.println("Error al buscar libro con ID:  " + id + ": " + e.getMessage());
         }
         return null;
     }
@@ -72,7 +72,7 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("[Error] Error buscando por titulo: " + e.getMessage());
+            System.err.println("Error buscando por titulo: " + e.getMessage());
         }
         return lista;
     }
@@ -94,7 +94,7 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("[Error] Error buscando por autor: " + e.getMessage());
+            System.err.println("Error buscando por autor: " + e.getMessage());
         }
         return lista;
     }
@@ -115,7 +115,7 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("[Error] Error buscando por genero: " + e.getMessage());
+            System.err.println("Error buscando por genero: " + e.getMessage());
         }
         return lista;
     }
@@ -137,11 +137,10 @@ public class LibroDAO {
             ps.setBoolean(5, libro.isDisponible());
 
             // executeUpdate retorna cuantas filas fueron afectadas
-            // Si es mayor a 0, significa que se insertó bien
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("[Error] No se pudo agregar el libro: " + e.getMessage());
+            System.err.println("No se pudo agregar el libro: " + e.getMessage());
             return false;
         }
     }

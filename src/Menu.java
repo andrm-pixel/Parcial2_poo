@@ -23,6 +23,9 @@ public class Menu {
         System.out.println("\nHasta luego. El sistema ha cerrado correctamente.");
         // Cerramos la conexion antes de salir
     }
+    public void mostrar() {
+        iniciar();
+    }
 
     // Imprime el menu principal en pantalla
     private void mostrarOpciones() {
@@ -164,13 +167,13 @@ public class Menu {
 
             case 11 -> {
                 // Devolvemos un libro: pedimos el ID del libro que regresa
-                System.out.println("\n--- DEVOLVER UN LIBRO ---");
+                System.out.println("\n DEVOLVER UN LIBRO ");
                 int idLibro = leerNumero("ID del libro que se devuelve: ");
 
                 if (prestamoDAO.registrarDevolucion(idLibro)) {
-                    System.out.println("[OK] Libro devuelto. Ya puede ser prestado de nuevo.");
+                    System.out.println("Libro devuelto. Ya puede ser prestado de nuevo.");
                 } else {
-                    System.out.println("[Error] No se pudo registrar la devolucion.");
+                    System.out.println("No se pudo registrar la devolucion.");
                 }
             }
 
@@ -222,8 +225,5 @@ public class Menu {
             lista.forEach(System.out::println);
             System.out.println("Total: " + lista.size() + " libro(s).");
         }
-    }
-
-    public void mostrar() {
     }
 }
