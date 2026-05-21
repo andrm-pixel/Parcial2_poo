@@ -64,11 +64,11 @@ public class Prestamo {
     }
 
     public int getIdLibro() {
-        return 0;
+        return id_libro;
     }
 
     public String getNombreUsuario() {
-        return null;
+        return nombre;
     }
 
     @Override

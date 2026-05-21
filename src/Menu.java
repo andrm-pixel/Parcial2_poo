@@ -53,7 +53,7 @@ public class Menu {
 
             case 1 -> {
                 // Mostramos todos los libros de la base de datos
-                System.out.println("\n--- CATALOGO COMPLETO DE LIBROS ---");
+                System.out.println("\nCATALOGO COMPLETO DE LIBROS ");
                 List<Libro> libros = libroDAO.consultarTodos();
                 if (libros.isEmpty()) {
                     System.out.println("No hay libros registrados todavia.");

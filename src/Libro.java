@@ -18,7 +18,12 @@ public class Libro {
     }
     // Getters y Setters
     public Libro(int id, String titulo, String autor, String genero, int año, boolean disponible) {
-
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.genero = genero;
+        this.año = año;
+        this.disponible = disponible;
     }
 
     public Integer getId() {
@@ -53,7 +58,7 @@ public class Libro {
         return genero;
     }
     public void setGenero(String genero) {
-        this.autor = genero;
+        this.genero = genero;
     }
 
     public Boolean getDisponible() {
