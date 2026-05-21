@@ -7,6 +7,7 @@ public class Prestamo {
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
 
+    //constructor
     public Prestamo(Integer id, Integer id_libro, String nombre, LocalDate fechaPrestamo,LocalDate fechaDevolucion) {
         this.id = id;
         this.id_libro = id_libro;
@@ -15,10 +16,7 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Prestamo() {
-
-    }
-
+    // Getters y Setters
     public Integer getId() {
 
         return id;
@@ -74,10 +72,6 @@ public class Prestamo {
     @Override
     public String toString() {
         String dev = (fechaDevolucion != null) ? fechaDevolucion.toString() : "Pendiente";
-        return "Prestamo #" + id
-                + " | Libro ID: " + id_libro
-                + " | Lector: " + nombre
-                + " | Prestado: " + fechaPrestamo
-                + " | Devolucion: " + dev;
+        return "Préstamo #" + id + " | Libro ID: " + id_libro + " | Lector: " + nombre + " | Prestado: " + fechaPrestamo + " | Devolución: " + dev;
     }
 }
