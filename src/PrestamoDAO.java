@@ -204,14 +204,14 @@ public class PrestamoDAO {
     private Prestamo mapearPrestamo(ResultSet rs) throws SQLException {
 
         // La fecha de devolución puede ser null en la base de datos
-        Date fechaDevSQL = rs.getDate("fecha_devolucion");
+        Date fechaDevSQL = rs.getDate("fecha_devolución");
         LocalDate fechaDev = (fechaDevSQL != null) ? fechaDevSQL.toLocalDate() : null;
 
         return new Prestamo(
                 rs.getInt("id"),
                 rs.getInt("id_libro"),
                 rs.getString("nombre_usuario"),
-                rs.getDate("fecha_prestamo").toLocalDate(),
+                rs.getDate("fecha_préstamo").toLocalDate(),
                 fechaDev
         );
     }
