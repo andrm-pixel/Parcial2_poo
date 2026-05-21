@@ -53,7 +53,7 @@ public class Menu {
 
             case 1 -> {
                 // Mostramos todos los libros de la base de datos
-                System.out.println("\nCATALOGO COMPLETO DE LIBROS ");
+                System.out.println("\n--- CATALOGO COMPLETO DE LIBROS ---");
                 List<Libro> libros = libroDAO.consultarTodos();
                 if (libros.isEmpty()) {
                     System.out.println("No hay libros registrados todavia.");
@@ -102,15 +102,15 @@ public class Menu {
                 String titulo  = leerTexto("Titulo: ");
                 String autor   = leerTexto("Autor: ");
                 String genero  = leerTexto("Genero: ");
-                int anio       = leerNumero("Anio de publicacion: ");
+                int año       = leerNumero("Año de publicación: ");
 
                 // Creamos el objeto Libro con disponible = true (es nuevo, nadie lo ha pedido)
-                Libro nuevo = new Libro(0, titulo, autor, genero, anio, true);
+                Libro nuevo = new Libro(0, titulo, autor, genero, año, true);
 
                 if (libroDAO.adicionar(nuevo)) {
-                    System.out.println("[OK] Libro agregado correctamente a la biblioteca.");
+                    System.out.println("Libro agregado correctamente a la biblioteca.");
                 } else {
-                    System.out.println("[Error] No se pudo agregar el libro.");
+                    System.out.println("No se pudo agregar el libro.");
                 }
             }
 
@@ -192,7 +192,7 @@ public class Menu {
     }
 
     // Le pide un numero al usuario.
-     private int leerNumero(String mensaje) {
+    private int leerNumero(String mensaje) {
         while (true) {
             System.out.print(mensaje);
             try {
