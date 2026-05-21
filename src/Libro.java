@@ -83,7 +83,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return id + " | " + titulo + " - " + autor +  " - " + genero + " - " + año + " - " + disponible;
+        return id + " | " + "Titulo: " + titulo + " | " + "Autor: " + autor +  " | " + "Genero: " + genero + " | " + "Año de publicación: " + año + " | " + "Disponible: " + disponible;
     }
 
     public boolean isDisponible() {
