@@ -10,7 +10,7 @@ public class LibroDAO {
     public List<Libro> consultarTodos() {
         List<Libro> lista = new ArrayList<>();
 
-        // Consulta SQL para traer todos los libros ordenados por id
+        // Consulta SQL para traer todos los libros ordenados por ID
         String sql = "SELECT * FROM libro ORDER BY id ASC";
 
         try (Connection con = ConeccionDataB.getConnection();
