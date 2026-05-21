@@ -44,7 +44,7 @@ public class Menu {
         System.out.println(" 11. Devolver un libro");
         System.out.println(" SISTEMA ");
         System.out.println("  0. salir");
-        System.out.println("  Que deseas realizar hoy?");
+        System.out.println("Que deseas realizar hoy?");
     }
 
     // Ejecuta la opcion que el usuario eligió
