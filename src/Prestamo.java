@@ -62,6 +62,7 @@ public class Prestamo {
     }
 
     public int getIdLibro() {
+
         return id_libro;
     }
 
