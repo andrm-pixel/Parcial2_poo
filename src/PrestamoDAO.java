@@ -11,7 +11,7 @@ public class PrestamoDAO {
     // Trae todos los préstamos de la base de datos
     public List<Prestamo> consultarTodos() {
         List<Prestamo> lista = new ArrayList<>();
-        String sql = "SELECT * FROM prestamos ORDER BY id ASC";
+        String sql = "SELECT * FROM prestamo ORDER BY id ASC";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -28,7 +28,7 @@ public class PrestamoDAO {
 
     // Busca un prestamo por su ID.
     public Prestamo consultarPorId(int id) {
-        String sql = "SELECT * FROM prestamos WHERE id = ?";
+        String sql = "SELECT * FROM prestamo WHERE id = ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -47,9 +47,9 @@ public class PrestamoDAO {
     }
 
     // Busca préstamos por el nombre del lector.
-     public List<Prestamo> consultarPorNombre(String nombre) {
+    public List<Prestamo> consultarPorNombre(String nombre) {
         List<Prestamo> lista = new ArrayList<>();
-        String sql = "SELECT * FROM prestamos WHERE nombre_usuario ILIKE ?";
+        String sql = "SELECT * FROM prestamo WHERE nombre_usuario ILIKE ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -80,7 +80,7 @@ public class PrestamoDAO {
             return false;
         }
 
-        String sql = "INSERT INTO prestamos (id_libro, nombre_usuario, fecha_prestamo, fecha_devolucion) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO prestamo (id_libro, nombre_usuario, fecha_prestamo, fecha_devolucion) VALUES (?, ?, ?, ?)";
         Connection con = null;
 
         try {
@@ -133,7 +133,7 @@ public class PrestamoDAO {
     // Registra la devolucion de un libro.
     public boolean registrarDevolucion(int idLibro) {
         // Buscamos si hay un prestamo activo para ese libro (sin fecha de devolución)
-        String sqlBuscar = "SELECT * FROM prestamos WHERE id_libro = ? AND fecha_devolucion IS NULL";
+        String sqlBuscar = "SELECT * FROM prestamo WHERE id_libro = ? AND fecha_devolucion IS NULL";
         Connection con = null;
 
         try {
@@ -160,7 +160,7 @@ public class PrestamoDAO {
             con.setAutoCommit(false);
 
             // Registramos la fecha de devolucion de hoy en el prestamo
-            String sqlActualizar = "UPDATE prestamos SET fecha_devolucion = ? WHERE id = ?";
+            String sqlActualizar = "UPDATE prestamo SET fecha_devolucion = ? WHERE id = ?";
             try (PreparedStatement ps = con.prepareStatement(sqlActualizar)) {
                 ps.setDate(1, Date.valueOf(LocalDate.now())); // La fecha de hoy
                 ps.setInt(2, prestamoActivo.getId());
@@ -195,7 +195,7 @@ public class PrestamoDAO {
     }
 
     // Metodo que convierte una fila de la base de datos en un objeto Prestamo.
-     private Prestamo mapearPrestamo(ResultSet rs) throws SQLException {
+    private Prestamo mapearPrestamo(ResultSet rs) throws SQLException {
         // La fecha de devolucion puede ser null en la base de datos
         Date fechaDevSQL = rs.getDate("fecha_devolucion");
         LocalDate fechaDev = (fechaDevSQL != null) ? fechaDevSQL.toLocalDate() : null;
