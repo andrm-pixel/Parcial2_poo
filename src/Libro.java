@@ -16,7 +16,7 @@ public class Libro {
         this.disponible = disponible;
 
     }
-    // Getters y Setters
+
     public Libro(int id, String titulo, String autor, String genero, int año, boolean disponible) {
         this.id = id;
         this.titulo = titulo;
@@ -26,6 +26,7 @@ public class Libro {
         this.disponible = disponible;
     }
 
+    // Getters y Setters
     public Integer getId() {
         return id;
     }
@@ -70,7 +71,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return id + " | " + titulo + " - " + autor + (disponible ? " [Disponible]" : " [Prestado]");
+        return id + " | " + titulo + " - " + autor + (disponible ? "Disponible" : "Prestado");
     }
 
     public boolean isDisponible() {

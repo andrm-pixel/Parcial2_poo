@@ -3,10 +3,10 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// DAO = Data Access Object (Objeto de Acceso a Datos). Aquí están todas las consultas SQL relacionadas con libros.
+// DAO = Data Access Object (Objeto de Acceso a Datos). Están todas las consultas SQL relacionadas con libros.
 public class LibroDAO {
 
-    // Trae TODOS los libros de la base de datos. Retorna una lista
+    // Trae todos los libros de la base de datos. Retorna una lista
     public List<Libro> consultarTodos() {
         List<Libro> lista = new ArrayList<>();
 
@@ -17,18 +17,17 @@ public class LibroDAO {
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
-            // Recorremos cada fila que nos devolvió la base de datos
+            // Recorrer cada fila de la base de datos, Convierte cada fila en un objeto Libro y lo agrega a la lista
             while (rs.next()) {
-                // Convertimos cada fila en un objeto Libro y lo agregamos a la lista
                 lista.add(mapearLibro(rs));
             }
         } catch (SQLException e) {
-            System.err.println("Error al consultar libros: " + e.getMessage());
+            System.err.println("Lo sentimos, ocurrió un error al consultar libros: " + e.getMessage());
         }
         return lista;
     }
 
-    //Busca un libro por su ID y si no lo encuentra, retorna null
+    //Busca libro por ID
     public Libro consultarPorId(int id) {
 
         String sql = "SELECT * FROM libro WHERE id = ?";
@@ -38,22 +37,21 @@ public class LibroDAO {
 
             ps.setInt(1, id);
 
-            // Si encontramos un resultado, lo convertimos en Libro
+            // Si encuentra un resultado, lo convierte en Libro
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return mapearLibro(rs);
                 }
             }
 
-            // Si no se encuentra, retornamos null
         } catch (SQLException e) {
-            System.err.println("Error al buscar libro con ID:  " + id + ": " + e.getMessage());
+            System.err.println("Ocurrió un error al buscar libro con ID:  " + id + ": " + e.getMessage());
         }
         return null;
     }
 
 
-    //Busca libros por título (búsqueda parcial). Ej: si buscas "cien" encontrará "Cien Años de Soledad".
+    //Busca libros por título (búsqueda parcial)
     public List<Libro> consultarPorTitulo(String titulo) {
         List<Libro> lista = new ArrayList<>();
 
@@ -72,7 +70,7 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error buscando por titulo: " + e.getMessage());
+            System.err.println("Ocurrió un error buscando por titulo: " + e.getMessage());
         }
         return lista;
     }
@@ -94,7 +92,7 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error buscando por autor: " + e.getMessage());
+            System.err.println("Ocurrió un error buscando por autor: " + e.getMessage());
         }
         return lista;
     }
@@ -115,37 +113,35 @@ public class LibroDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Error buscando por genero: " + e.getMessage());
+            System.err.println("Ocurrió un error buscando por genero: " + e.getMessage());
         }
         return lista;
     }
 
-    //Agrega un libro nuevo a la base de datos. Retorna true si se guardo bien, false si hubo un error.
+    //Agrega un libro a la base de datos
     public boolean adicionar(Libro libro) {
 
-        // No incluimos el 'id' porque la base de datos lo genera automáticamente (SERIAL)
         String sql = "INSERT INTO libro (titulo, autor, genero, año, disponible) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            // Colocamos cada dato en su lugar correspondiente
             ps.setString(1, libro.getTitulo());
             ps.setString(2, libro.getAutor());
             ps.setString(3, libro.getGenero());
             ps.setInt(4, libro.getAño());
             ps.setBoolean(5, libro.isDisponible());
 
-            // executeUpdate retorna cuantas filas fueron afectadas
+            // ps.executeUpdate retorna cuantas filas fueron afectadas
             return ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("No se pudo agregar el libro: " + e.getMessage());
+            System.err.println("Lo sentimos, no se pudo agregar el libro: " + e.getMessage());
             return false;
         }
     }
 
-    // Cambia el estado de disponibilidad de un libro
+    // Cambiar estado de disponibilidad de un libro
     public void actualizarDisponibilidad(int idLibro, boolean disponible, Connection con) throws SQLException {
         String sql = "UPDATE libro SET disponible = ? WHERE id = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -156,7 +152,7 @@ public class LibroDAO {
     }
 
 
-    // Método que convierte una fila de la base de datos en un objeto Libro
+    // Método convierte una fila de la base de datos en un objeto Libro
     private Libro mapearLibro(ResultSet rs) throws SQLException {
         return new Libro(
                 rs.getInt("id"),
