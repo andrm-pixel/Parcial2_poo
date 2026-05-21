@@ -28,44 +28,56 @@ public class Libro {
 
     // Getters y Setters
     public Integer getId() {
+
         return id;
     }
     public void setId(Integer id) {
+
         this.id = id;
     }
 
     public Integer getAño() {
+
         return año;
     }
     public void setAño(Integer año) {
+
         this.año = año;
     }
 
     public String getTitulo() {
+
         return titulo;
     }
     public void setTitulo(String titulo) {
+
         this.titulo = titulo;
     }
 
     public String getAutor() {
+
         return autor;
     }
     public void setAutor(String autor) {
+
         this.autor = autor;
     }
 
     public String getGenero() {
+
         return genero;
     }
     public void setGenero(String genero) {
+
         this.genero = genero;
     }
 
     public Boolean getDisponible() {
+
         return disponible;
     }
     public void setDisponible(boolean disponible) {
+
         this.disponible = disponible;
     }
 
