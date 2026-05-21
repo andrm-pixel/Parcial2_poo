@@ -11,7 +11,7 @@ public class LibroDAO {
         List<Libro> lista = new ArrayList<>();
 
         // Consulta SQL para traer todos los libros ordenados por id
-        String sql = "SELECT * FROM libros ORDER BY id ASC";
+        String sql = "SELECT * FROM libro ORDER BY id ASC";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class LibroDAO {
     //Busca un libro por su ID y si no lo encuentra, retorna null
     public Libro consultarPorId(int id) {
 
-        String sql = "SELECT * FROM libros WHERE id = ?";
+        String sql = "SELECT * FROM libro WHERE id = ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -45,7 +45,7 @@ public class LibroDAO {
                 }
             }
 
-        // Si no se encuentra, retornamos null
+            // Si no se encuentra, retornamos null
         } catch (SQLException e) {
             System.err.println("Error al buscar libro con ID:  " + id + ": " + e.getMessage());
         }
@@ -58,7 +58,7 @@ public class LibroDAO {
         List<Libro> lista = new ArrayList<>();
 
         // ILIKE para buscar sin importar mayúsculas o minúsculas
-        String sql = "SELECT * FROM libros WHERE titulo ILIKE ?";
+        String sql = "SELECT * FROM libro WHERE titulo ILIKE ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -81,7 +81,7 @@ public class LibroDAO {
     // Busca libros por nombre de autor (búsqueda parcial)
     public List<Libro> consultarPorAutor(String autor) {
         List<Libro> lista = new ArrayList<>();
-        String sql = "SELECT * FROM libros WHERE autor ILIKE ?";
+        String sql = "SELECT * FROM libro WHERE autor ILIKE ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -102,7 +102,7 @@ public class LibroDAO {
     //Busca libros por género.
     public List<Libro> consultarPorGenero(String genero) {
         List<Libro> lista = new ArrayList<>();
-        String sql = "SELECT * FROM libros WHERE genero ILIKE ?";
+        String sql = "SELECT * FROM libro WHERE genero ILIKE ?";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -124,7 +124,7 @@ public class LibroDAO {
     public boolean adicionar(Libro libro) {
 
         // No incluimos el 'id' porque la base de datos lo genera automáticamente (SERIAL)
-        String sql = "INSERT INTO libros (titulo, autor, genero, anio, disponible) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO libro (titulo, autor, genero, año, disponible) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConeccionDataB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -147,7 +147,7 @@ public class LibroDAO {
 
     // Cambia el estado de disponibilidad de un libro
     public void actualizarDisponibilidad(int idLibro, boolean disponible, Connection con) throws SQLException {
-        String sql = "UPDATE libros SET disponible = ? WHERE id = ?";
+        String sql = "UPDATE libro SET disponible = ? WHERE id = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setBoolean(1, disponible);
             ps.setInt(2, idLibro);

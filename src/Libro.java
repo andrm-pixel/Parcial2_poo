@@ -74,6 +74,6 @@ public class Libro {
     }
 
     public boolean isDisponible() {
-        return true;
+        return disponible;
     }
 }
