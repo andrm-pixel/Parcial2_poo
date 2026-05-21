@@ -17,15 +17,6 @@ public class Libro {
 
     }
 
-    public Libro(int id, String titulo, String autor, String genero, int año, boolean disponible) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.genero = genero;
-        this.año = año;
-        this.disponible = disponible;
-    }
-
     // Getters y Setters
     public Integer getId() {
         return id;
