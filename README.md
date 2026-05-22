@@ -55,15 +55,14 @@ biblioteca/
 
 | Clase | Responsabilidad |
 |-------|----------------|
-| `ConeccionDataB` | Centraliza la configuración de la conexión (URL, usuario, contraseña) y expone `getConnection()` |
+| `ConeccionDataB` | Lee `URL`, `USER` y `KEY` del `.env` con dotenv y expone `getConnection()` |
 | `Libro` | Modelo con atributos: `id`, `titulo`, `autor`, `genero`, `año`, `disponible` |
 | `LibroDAO` | CRUD de libros: consultar todos, buscar por ID/título/autor/género, agregar, actualizar disponibilidad |
 | `Prestamo` | Modelo con atributos: `id`, `id_libro`, `nombre`, `fechaPrestamo`, `fechaDevolucion` |
 | `PrestamoDAO` | Registrar préstamos y devoluciones usando transacciones; consultar por ID o nombre |
 | `Menu` | Muestra el menú, lee la entrada del usuario y llama a los DAOs correspondientes |
 | `Main` | Crea un `Menu` y llama a `mostrar()` para iniciar la aplicación |
-| `TestConnection` | Clase de utilidad para verificar que la conexión a la base de datos funciona |
-
+| `TestConnection` | Verifica que la conexión a la BD funciona (también usa dotenv) |
 ---
 
 ## Tecnologías utilizadas
@@ -72,8 +71,8 @@ biblioteca/
 - **PostgreSQL** (base de datos relacional)
 - **Neon** (PostgreSQL serverless en la nube)
 - **JDBC** (Java Database Connectivity) para la comunicación con la base de datos
+- **dotenv-java** (`io.github.cdimascio`) para leer el archivo `.env`
 - Patrón de diseño **DAO**
-- **dotenv-java** (Leer el archivo .env)
 - **Transacciones SQL** (`commit` / `rollback`) para garantizar integridad en préstamos y devoluciones
 
 ---
@@ -83,8 +82,7 @@ biblioteca/
 - IntelliJ IDEA (Community o Ultimate)
 - JDK 17 o superior
 - Acceso a internet (la base de datos está en Neon)
-- Driver JDBC de PostgreSQL (se agrega como dependencia en IntelliJ)
-
+- Driver JDBC de PostgreSQL y librería `dotenv-java` (agregados como dependencias en IntelliJ)
 ---
 
 ## Esquema de la base de datos
