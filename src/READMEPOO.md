@@ -18,15 +18,14 @@ Todo se maneja desde un menú interactivo en consola.
 ---
 
 ## Diagrama de clases
+![Diagrama de Clases.png](../Diagrama%20de%20Clases.png)
 
-![Diagrama de clases](docs/diagrama_clases.png)
-
-| Color | Capa |
-|-------|------|
-| 🟣 Morado | Modelos (`Libro`, `Prestamo`) |
-| 🟢 Verde | DAOs (`LibroDAO`, `PrestamoDAO`) |
-| 🟠 Coral | Conexión (`ConeccionDataB`) |
-| ⚫ Gris | Control y entrada (`Menu`, `Main`) |
+| Color      | Capa |
+|------------|------|
+| 🟣 Morado  | Modelos (`Libro`, `Prestamo`) |
+| 🟢 Verde   | DAOs (`LibroDAO`, `PrestamoDAO`) |
+| 🟠 Naranja | Conexión (`ConeccionDataB`) |
+| ⚫ Gris     | Control y entrada (`Menu`, `Main`) |
 
 ---
 
@@ -42,13 +41,11 @@ biblioteca/
 │   ├── Menu.java             # Interfaz de usuario en consola (menú interactivo)
 │   ├── Prestamo.java         # Clase modelo que representa un préstamo
 │   ├── PrestamoDAO.java      # Consultas SQL relacionadas con préstamos
+│   ├── README.md
 │   └── TestConnection.java   # Prueba rápida de conexión a la base de datos
-├── docs/
-│   └── diagrama_clases.png   # Diagrama UML de clases
-├── schema.sql                # Script para crear las tablas en la base de datos
-├── .env.example              # Plantilla de variables de entorno (sin credenciales reales)
-├── .gitignore                # Excluye .env y archivos generados por IntelliJ
-└── README.md
+└── docs/
+    └── diagrama_clases.png   # Diagrama UML de clases
+
 ```
 
 ---
