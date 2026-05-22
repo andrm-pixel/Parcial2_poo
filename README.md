@@ -71,6 +71,7 @@ biblioteca/
 - **Neon** (PostgreSQL serverless en la nube)
 - **JDBC** (Java Database Connectivity) para la comunicación con la base de datos
 - Patrón de diseño **DAO**
+- **
 - **Transacciones SQL** (`commit` / `rollback`) para garantizar integridad en préstamos y devoluciones
 
 ---
