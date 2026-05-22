@@ -19,6 +19,9 @@ Todo se maneja desde un menú interactivo en consola.
 
 ## Diagrama de clases
 
+<img width="781" height="733" alt="Diagrama de Clases" src="https://github.com/user-attachments/assets/ceff7a09-4bdd-407e-ab3b-b4c03bd5bd74" />
+
+
 | Color      | Capa |
 |------------|------|
 | 🟣 Morado  | Modelos (`Libro`, `Prestamo`) |
