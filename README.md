@@ -19,6 +19,8 @@ Todo se maneja desde un menú interactivo en consola.
 
 ## Diagrama de clases
 
+<img width="781" height="733" alt="Diagrama de Clases" src="https://github.com/user-attachments/assets/ceff7a09-4bdd-407e-ab3b-b4c03bd5bd74" />
+
 | Color      | Capa |
 |------------|------|
 | 🟣 Morado  | Modelos (`Libro`, `Prestamo`) |
@@ -71,7 +73,7 @@ biblioteca/
 - **Neon** (PostgreSQL serverless en la nube)
 - **JDBC** (Java Database Connectivity) para la comunicación con la base de datos
 - Patrón de diseño **DAO**
-- **
+- **dotenv-java-3.2.0** (Leer el archivo .env)
 - **Transacciones SQL** (`commit` / `rollback`) para garantizar integridad en préstamos y devoluciones
 
 ---
