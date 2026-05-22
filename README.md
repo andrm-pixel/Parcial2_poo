@@ -18,7 +18,6 @@ Todo se maneja desde un menú interactivo en consola.
 ---
 
 ## Diagrama de clases
-![Diagrama de Clases.png](Diagrama%20de%20Clases.png)
 
 | Color      | Capa |
 |------------|------|
@@ -72,7 +71,6 @@ biblioteca/
 - **Neon** (PostgreSQL serverless en la nube)
 - **JDBC** (Java Database Connectivity) para la comunicación con la base de datos
 - Patrón de diseño **DAO**
-- **Dotenv-java** (Leer archivo .env)
 - **Transacciones SQL** (`commit` / `rollback`) para garantizar integridad en préstamos y devoluciones
 
 ---
