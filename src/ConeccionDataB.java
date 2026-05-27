@@ -5,11 +5,9 @@ import java.sql.SQLException;
 
 public class ConeccionDataB {
 
-    private static final Dotenv dotenv = Dotenv.load();
-
-    private static final String URL = dotenv.get("URL");
-    private static final String USER = dotenv.get("USER");
-    private static final String KEY = dotenv.get("KEY");
+    private static final String URL = System.getenv("URL");
+    private static final String USER = System.getenv("USER");
+    private static final String KEY = System.getenv("KEY");
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, KEY);
