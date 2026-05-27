@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Connection
 public class ConeccionDataB {
 
     private static final String URL = System.getenv("URL");
